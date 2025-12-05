@@ -124,7 +124,7 @@ class LaplacianPyramidGDN(nn.Module):
         self.dims = dims
         self.filt = nn.Parameter(torch.Tensor(filt))
         self.filt.requires_grad = False
-        self.gdns = nn.ModuleList([expert_divisive_normalisation.GDN(
+        self.gdns = nn.ModuleList([GDN(
             dims, apply_independently=True) for i in range(self.k)])
         self.pad_one = nn.ReflectionPad2d(1)
         self.pad_two = nn.ReflectionPad2d(2)
